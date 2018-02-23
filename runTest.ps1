@@ -31,35 +31,22 @@ try
 
 	# File Names
 	$PROJECT="$PSScriptRoot\$PROJECTNAME\$PROJECTNAME"+".csproj"
-	$TEST = "$PSScriptRoot\$PROJECTNAME\bin\$CONFIGURATION\$PROJECTNAME.dll"
 	$RESULTXML="$resultDir\$DATEYYYYMMDD"+"TestResult"+"$CONFIGURATION.xml"
 	$RESULTTXT="$resultDir\$DATEYYYYMMDD"+"TestResult"+"$CONFIGURATION.txt"
 	$RESULTERR="$resultDir\$DATEYYYYMMDD"+"StdErr"+"$CONFIGURATION.txt"
 	$RESULTHTML = "$resultDir\$DATEYYYYMMDD"+"$CONFIGURATION.html"
+    $XSLTFILE="$PSScriptRoot\NUnitExecutionReport.xslt"
 
 
 	# Run Tests
-	nunit3-console --framework=net-4.5 --result="$RESULTXML;format=nunit3" --out=$RESULTTXT $TEST --err="$RESULTERR" --where $SELECTTEST
+	nunit3-console --framework=net-4.5 --result="$RESULTXML;format=nunit2" --out=$RESULTTXT $PROJECT --err="$RESULTERR" --where $SELECTTEST
     
-	specflow nunitexecutionreport $PROJECT /xmlTestResult:$RESULTXML /out:$RESULTHTML
+    
+    # Workaround: Change Nunit3 Output Log Format in order to match with Nunit2
+    #(Get-Content $RESULTLOG) | ForEach-Object { $_ -replace '=>', '*****' } | Set-Content $RESULTLOG
+    #specflow nunitexecutionreport $PROJECT /xmlTestResult:$RESULTXML /out:$RESULTHTML
 
-#&$specflowPath nunitexecutionreport $projectPath /xmlTestResult:$outputXmlPath /out:$outputHtmlPath#
-#specflow nunitexecutionreport $PROJECT /testOutput:$RESULTLOG /xmlTestResult:$RESULTXML /xsltFile:$XSLTFILE /out:$EXECUTIONREP.html
-
-	<# 
-nunit3-console --framework=net-4.5 --out="$RESULTLOG" --result="$RESULTXML;format=nunit2" --err="$RESULTERR" --where "$TESTSELECT" "$PROJECT" --config="$CONFIGURATION"
- --noheader --framework=net-4.5 --out="$RESULTLOG" --result="$outputXmlPath;format=nunit3" --err="$RESULTERR" --work=$resulteRootDir --where "$TESTSELECT"
-
-	& nunit-console.exe /labels /result=$outputXmlPath /output=$outputTxtPath $binPath /framework:net-4.5 /include:$include
-	& $specflowPath nunitexecutionreport $projectPath /xmlTestResult:$outputXmlPath /out:$outputHtmlPath
-	#>
-
-
-	<#
-	$outputTxtPath = "C:\E2ETests\Unity-OUT\Output-Chrome.txt"
-	$outputXmlPath = "C:\E2ETests\Unity-OUT\Result-Chrome.xml"
-	$outputHtmlPath = "C:\E2ETests\Unity-OUT\E2EReport-Chrome.html" 
-	#>
+    specflow nunitexecutionreport $PROJECT /xmlTestResult:$RESULTXML /xsltFile:$XSLTFILE /out:$RESULTHTML
 	
 }
 catch

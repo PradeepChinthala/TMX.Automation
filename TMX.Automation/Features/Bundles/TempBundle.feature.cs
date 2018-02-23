@@ -19,7 +19,7 @@ namespace TMX.Automation.Features.Bundles
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Temp Bundle")]
-    [NUnit.Framework.CategoryAttribute("Sprint#1")]
+    [NUnit.Framework.CategoryAttribute("Regression")]
     public partial class TempBundleFeature
     {
         
@@ -33,7 +33,7 @@ namespace TMX.Automation.Features.Bundles
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Temp Bundle", "\tIn order to avoid silly mistakes", ProgrammingLanguage.CSharp, new string[] {
-                        "Sprint#1"});
+                        "Regression"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -67,11 +67,9 @@ namespace TMX.Automation.Features.Bundles
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Select Bundle Verify Index and My View [TC-123]")]
-        [NUnit.Framework.CategoryAttribute("Sprint#1")]
         public virtual void SelectBundleVerifyIndexAndMyViewTC_123()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Select Bundle Verify Index and My View [TC-123]", new string[] {
-                        "Sprint#1"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Select Bundle Verify Index and My View [TC-123]", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7

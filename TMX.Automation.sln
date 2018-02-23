@@ -12,7 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6EFDBEC2-DD15-469A-8879-BAA9463CE3DA}"
 	ProjectSection(SolutionItems) = preProject
 		Common.xslt = Common.xslt
-		executeTest.ps1 = executeTest.ps1
 		GherkinElements.xslt = GherkinElements.xslt
 		Languages.xml = Languages.xml
 		NUnitExecutionReport.xslt = NUnitExecutionReport.xslt
