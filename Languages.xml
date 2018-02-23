@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SpecFlowLanguages>
+  <Language code="en" cultureInfo="en" defaultSpecificCulture="en-US" englishName="English">
+    <Feature>Feature</Feature>
+    <Background>Background</Background>
+    <Scenario>Scenario</Scenario>
+    <ScenarioOutline>Scenario Outline</ScenarioOutline>
+    <ScenarioOutline>Scenario Template</ScenarioOutline>
+    <Examples>Examples</Examples>
+    <Examples>Scenarios</Examples>
+    <Given>Given</Given>
+    <When>When</When>
+    <Then>Then</Then>
+    <And>And</And>
+    <But>But</But>
+  </Language>
+</SpecFlowLanguages>
