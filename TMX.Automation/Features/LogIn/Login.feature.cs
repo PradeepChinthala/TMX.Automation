@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace TMX.Automation.Features
+namespace TMX.Automation.Features.LogIn
 {
     using TechTalk.SpecFlow;
     

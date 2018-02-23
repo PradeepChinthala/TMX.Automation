@@ -102,7 +102,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TempBundle.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Login.feature.cs">
+    <Compile Include="Features\LogIn\Login.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.feature</DependentUpon>
@@ -135,7 +135,7 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>TempBundle.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\Login.feature">
+    <None Include="Features\LogIn\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Login.feature.cs</LastGenOutput>
     </None>
