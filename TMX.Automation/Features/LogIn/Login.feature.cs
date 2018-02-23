@@ -19,7 +19,7 @@ namespace TMX.Automation.Features.LogIn
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Login")]
-    [NUnit.Framework.CategoryAttribute("LoginFeature")]
+    [NUnit.Framework.CategoryAttribute("Regression")]
     public partial class LoginFeature
     {
         
@@ -33,7 +33,7 @@ namespace TMX.Automation.Features.LogIn
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Login", "\tIn order to verify control access to the Matter\r\n\tAs a user or authenticated", ProgrammingLanguage.CSharp, new string[] {
-                        "LoginFeature"});
+                        "Regression"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,11 +75,9 @@ namespace TMX.Automation.Features.LogIn
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Successful sign in and display dashboard [TC-1234]")]
-        [NUnit.Framework.CategoryAttribute("SP1")]
         public virtual void SuccessfulSignInAndDisplayDashboardTC_1234()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful sign in and display dashboard [TC-1234]", new string[] {
-                        "SP1"});
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful sign in and display dashboard [TC-1234]", ((string[])(null)));
 #line 10
 this.ScenarioSetup(scenarioInfo);
 #line 6

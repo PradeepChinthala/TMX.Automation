@@ -1,4 +1,4 @@
-﻿@Regression
+﻿@Sprint#1
 Feature: Temp Bundle
 	In order to avoid silly mistakes
 

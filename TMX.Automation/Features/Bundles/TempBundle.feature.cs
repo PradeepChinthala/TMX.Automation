@@ -19,7 +19,7 @@ namespace TMX.Automation.Features.Bundles
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Temp Bundle")]
-    [NUnit.Framework.CategoryAttribute("Regression")]
+    [NUnit.Framework.CategoryAttribute("Sprint#1")]
     public partial class TempBundleFeature
     {
         
@@ -33,7 +33,7 @@ namespace TMX.Automation.Features.Bundles
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Temp Bundle", "\tIn order to avoid silly mistakes", ProgrammingLanguage.CSharp, new string[] {
-                        "Regression"});
+                        "Sprint#1"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
