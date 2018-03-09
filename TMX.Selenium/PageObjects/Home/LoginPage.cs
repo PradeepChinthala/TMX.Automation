@@ -38,7 +38,8 @@ namespace TMX.Selenium.PageObjects.Home
             this.email.SendKeysWrapper(email);
             this.password.SendKeysWrapper(password);
             logInButton.ClickWrapper();
-            return new HomePage(driver);
+            var home = new HomePage(driver); ;
+            return home.Load();
         }
         #endregion
 

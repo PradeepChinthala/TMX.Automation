@@ -96,20 +96,7 @@ namespace TMX.Selenium
             {
                 throw new Exception(String.Format("Element {0} is not displayed", elements));
             }
-        }        
-
-        public static bool ControlDisplayed(this IWebElement element, bool displayed = true, uint timeoutInSeconds = 30)
-        {
-            IWebDriver driver = element.WrapsDriver();
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
-            wait.IgnoreExceptionTypes(typeof(Exception));
-            return wait.Until(drv =>
-            {
-                if (!displayed && !element.Displayed || displayed && element.Displayed)
-                    return true;
-                return false;
-            });
-        }
+        }                
 
         public static bool ControlEnabled(this IWebElement element, bool enabled = true, uint timeoutInSeconds = 30)
         {            
@@ -126,6 +113,15 @@ namespace TMX.Selenium
                 else
                     return false;
             });
+        }
+
+        public static bool ControlExist(this IWebElement element, uint timeoutInSeconds = 30)
+        {
+            try
+            {
+                return element.ControlEnabled(true,timeoutInSeconds);
+            }
+            catch { return false; }
         }
 
         public static void ScrollToElementPage(this IWebElement element)
@@ -170,19 +166,22 @@ namespace TMX.Selenium
                 .GetValue(elementProxy);
 
             return (By)bysFromElement[0];
-        }
+        }        
 
         public static IWebDriver WrapsDriver(this IWebElement element)
         {
-            IWebDriver driver = (element as IWrapsDriver ?? (IWrapsDriver)((IWrapsElement)element).WrappedElement).WrappedDriver;
-            return driver;
+            try
+            {
+                IWebDriver driver = (element as IWrapsDriver ?? (IWrapsDriver)((IWrapsElement)element).WrappedElement).WrappedDriver;
+                return driver;
+            }
+            catch { throw; }            
         }
 
         #region Java Executor
 
         private static void JavaScriptExecutor(string pattern, IWebElement element)
         {
-            //IWebDriver driver = element.WrapsDriver();
             var js = element.WrapsDriver() as IJavaScriptExecutor;
             js.ExecuteScript(pattern, element);
         }

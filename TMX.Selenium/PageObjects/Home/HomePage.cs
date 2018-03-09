@@ -9,7 +9,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace TMX.Selenium.PageObjects.Home
 {
-    public class HomePage : BasePage
+    public class HomePage : BasePageLoadable<HomePage>
     {
         #region Constructor
         public HomePage(IWebDriver driver) : base(driver) { }
@@ -45,6 +45,9 @@ namespace TMX.Selenium.PageObjects.Home
 
         [FindsBy(How = How.Id, Using = "md-tab-label-0-1")]
         private IWebElement textFilterTab = null;
+
+        //[FindsBy(How = How.XPath, Using = "//app-root[contains(text(),'Loading')]")]
+        //private IWebElement loading = null;
 
 
         #endregion
@@ -87,7 +90,7 @@ namespace TMX.Selenium.PageObjects.Home
 
         public BundlePage GotoBundles()
         {
-            Wait(ExpectedConditions.ElementExists(bundles.GetLocator()),60);
+            Wait(ExpectedConditions.ElementExists(bundles.GetLocator()));
             bundles.ClickWrapper();
             return new BundlePage(driver);
         }
@@ -95,6 +98,16 @@ namespace TMX.Selenium.PageObjects.Home
         public void ClickCaseSettings()
         {
             caseSettings.ClickWrapper();
+        }
+
+        protected override void ExecuteLoad()
+        {
+            driver.Navigate().Refresh();
+        }
+
+        protected override bool EvaluateLoadedStatus()
+        {
+            return WaitAndGetResult(ExpectedConditions.UrlContains("/dashboard"), waitLong);
         }
         #endregion
     }

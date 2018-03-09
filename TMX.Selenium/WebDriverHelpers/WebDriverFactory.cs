@@ -14,8 +14,8 @@ namespace TMX.Selenium.WebDriverHelpers
         public IWebDriver GetWebDriver(string browser, string Url=null)
         {
             IWebDriver driver;
-
-            if(string.IsNullOrEmpty(Url))
+            Url = Config.SiteUrl;
+            if (!Url.Contains("https://tmx"))
                  Url = $@"https://{Config.AuthenticateUserName}:{Config.AuthenticatePassword}@{Config.SiteUrl}/site";
 
             switch (browser.ToLower())

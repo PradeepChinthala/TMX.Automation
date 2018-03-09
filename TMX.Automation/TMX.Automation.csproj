@@ -38,9 +38,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+	<DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\QA\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'STG|AnyCPU'">
+	<DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\STG\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
@@ -101,6 +103,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TempBundle.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\DashBoard\DashBoard.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DashBoard.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\LogIn\Login.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,6 +140,10 @@
     <None Include="Features\Bundles\TempBundle.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>TempBundle.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\DashBoard\DashBoard.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DashBoard.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\LogIn\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

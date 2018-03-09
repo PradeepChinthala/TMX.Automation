@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace TMX.Automation.Features.Bundles
+namespace TMX.Automation.Features.DashBoard
 {
     using TechTalk.SpecFlow;
     
@@ -18,21 +18,21 @@ namespace TMX.Automation.Features.Bundles
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Temp Bundle")]
+    [NUnit.Framework.DescriptionAttribute("Login")]
     [NUnit.Framework.CategoryAttribute("Regression")]
-    public partial class TempBundleFeature
+    public partial class LoginFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "TempBundle.feature"
+#line 1 "DashBoard.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Temp Bundle", "\tIn order to avoid silly mistakes", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Login", "\tIn order to verify control access to the Matter\r\n\tAs a user or authenticated", ProgrammingLanguage.CSharp, new string[] {
                         "Regression"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -67,30 +67,24 @@ namespace TMX.Automation.Features.Bundles
         
         public virtual void FeatureBackground()
         {
-#line 5
 #line 6
+#line 7
  testRunner.Given("I go to dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Select Bundle Verify Index and My View [TC-123]")]
-        public virtual void SelectBundleVerifyIndexAndMyViewTC_123()
+        [NUnit.Framework.DescriptionAttribute("Successful sign in and display dashboard [TC-1234]")]
+        public virtual void SuccessfulSignInAndDisplayDashboardTC_1234()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Select Bundle Verify Index and My View [TC-123]", ((string[])(null)));
-#line 8
-this.ScenarioSetup(scenarioInfo);
-#line 5
-this.FeatureBackground();
-#line 9
- testRunner.When("I click on Bundles", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful sign in and display dashboard [TC-1234]", ((string[])(null)));
 #line 10
- testRunner.And("I click on index view", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
 #line 11
- testRunner.And("I click on my view", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("I click on logout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
- testRunner.And("I click on logout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
   testRunner.Then("login page should display", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

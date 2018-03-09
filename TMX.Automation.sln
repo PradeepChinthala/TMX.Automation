@@ -12,10 +12,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6EFDBEC2-DD15-469A-8879-BAA9463CE3DA}"
 	ProjectSection(SolutionItems) = preProject
 		Common.xslt = Common.xslt
+		featureTags.xml = featureTags.xml
 		GherkinElements.xslt = GherkinElements.xslt
 		Languages.xml = Languages.xml
 		NUnitExecutionReport.xslt = NUnitExecutionReport.xslt
 		runTest.ps1 = runTest.ps1
+		sendReport.ps1 = sendReport.ps1
 	EndProjectSection
 EndProject
 Global
@@ -28,8 +30,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.QA|Any CPU.ActiveCfg = Debug|Any CPU
-		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.QA|Any CPU.Build.0 = Debug|Any CPU
+		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.QA|Any CPU.Build.0 = QA|Any CPU
 		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E464C9A3-BDA3-4FC2-AD68-3B67C8A31887}.STG|Any CPU.ActiveCfg = STG|Any CPU
