@@ -3,7 +3,8 @@ Param(
 	#[ValidateSet("QA", "STAGE")]
 	[string]$CONFIGURATION="QA",
 	[string]$PROJECTNAME = 'TMX.Automation',
-	[string]$SELECTTEST = 'cat == Regression'
+	[string]$SELECTTEST = 'cat == Regression',
+	[boolean]$UPDATEBUILD = $false
 )
 Function ResizePSWindow
 {	
@@ -20,6 +21,13 @@ try
 	$DateTime = get-date -format ddd_ddMMyyyy_HHmmss
 	$DATEYYYYMMDD=(Get-Date).ToString('yyyyMMddHHmmss')
 
+	Start-Transcript -path "C:\evidence\logs\ReportExecution$DATEYYYYMMDD.log"
+
+	# PRECONDITIONS
+	# *************
+	# Usage: TESTSELECT is the test select language use by Nunit3 in order to filter execution
+
+	# Change to the Project directory
     Set-Location $PSScriptRoot
 
 	# Automation Directory
@@ -41,6 +49,14 @@ try
     $XSLTFILE="$PSScriptRoot\NUnitExecutionReport.xslt"
 	$DLL = "$PSScriptRoot\$PROJECTNAME\bin\$CONFIGURATION\$PROJECTNAME.dll"
 
+	# AutoUpdate and Build code
+	IF($UPDATEBUILD){
+		git pull
+		nuget restore $SOLUTION
+		Invoke-Expression "msbuild.exe $SOLUTION /target:Clean /target:Build /p:Configuration=$CONFIGURATION"
+	}
+
+	ResizePSWindow
 
 	# Run Tests
 	nunit3-console --framework=net-4.5 --result="$RESULTXML;format=nunit2" --out=$RESULTTXT $DLL --err="$RESULTERR" --where $SELECTTEST --config="$CONFIGURATION"
@@ -48,11 +64,14 @@ try
 	# Generate Html Report
     specflow nunitexecutionreport $PROJECT /xmlTestResult:$RESULTXML /xsltFile:$XSLTFILE /out:$RESULTHTML
 
+	Stop-Transcript
+
 	#.\sendReport.ps1 -file $RESULTHTML -browser "Chrome"
 }
 catch
 {
 }
+
 	
 
 
