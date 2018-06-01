@@ -19,10 +19,10 @@ namespace TMX.TestAutomation.FeatureSteps.Login
             homePage = loginPage.Login();
         }
 
-        [Given(@"I Select Matter (.*)")]
-        public void GivenISelectMatter(string matterName)
+        [Given(@"I Select Matter")]
+        public void GivenISelectMatter()
         {
-            homePage.SelectMatter(matterName);
+            homePage.SelectMatter();
         }
 
         [Given(@"I Goto Matter Setting")]

@@ -38,7 +38,14 @@ namespace TMX.Selenium.PageObjects.Home
             this.email.SendKeysWrapper(email);
             this.password.SendKeysWrapper(password);
             logInButton.Submit();
-            System.Threading.Thread.Sleep(1000);
+            try
+            {
+                logInButton.ControlEnabled(true,10);
+                if (!string.IsNullOrEmpty(this.email.Text))
+                    Login();
+            }
+            catch {}
+
             var home = new HomePage(driver);
             return home.Load();
         }

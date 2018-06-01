@@ -64,11 +64,11 @@ namespace TMX.Selenium.PageObjects.Home
         {
             logOutButton.ClickWrapper();
         }
-        public void SelectMatter(string matterName)
+        public void SelectMatter()
         {
             matterDropDown.ClickWrapper();
             wait.Until(d => matterSelection.Count > 1);
-            matterSelection.SelectCustomOption(matterName);
+            matterSelection.SelectCustomOption(Config.MatterName);
         }
         public void SelecteFilter(string filterSelection)
         {

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace TMX.Automation.Features.Users
+namespace TMX.Automation.Features.MatterSetting
 {
     using TechTalk.SpecFlow;
     
@@ -83,7 +83,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line 10
- testRunner.Given("I Select Matter Matter for US#246154", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I Select Matter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 11
  testRunner.When("I Goto Matter Setting", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
@@ -134,7 +134,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 5
 this.FeatureBackground();
 #line 29
- testRunner.Given("I Select Matter Matter for US#246154", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I Select Matter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 30
  testRunner.When("I Goto Matter Setting", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 31

@@ -7,7 +7,7 @@ Background:
 
 Scenario: [TC-264027]
 Delete User Fields 
-	Given I Select Matter Matter for US#246154
+	Given I Select Matter
 	When I Goto Matter Setting
 	And I Click Fields
 	Given I Click AddField 
@@ -26,7 +26,7 @@ Delete User Fields
 
 Scenario Outline: [TC-264028]
 Delete User Fields 
-	Given I Select Matter Matter for US#246154
+	Given I Select Matter
 	When I Goto Matter Setting
 	And I Click Fields
 	Given I Click AddField 

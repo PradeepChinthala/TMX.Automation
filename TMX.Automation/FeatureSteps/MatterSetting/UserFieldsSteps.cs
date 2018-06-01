@@ -4,7 +4,7 @@ using TMX.Selenium.PageObjects.Home;
 using TMX.Selenium.PageObjects.MatterSetting;
 using TMX.TestAutomation.FeatureSteps;
 
-namespace TMX.Automation.FeatureSteps.Users
+namespace TMX.Automation.FeatureSteps.MatterSetting
 {
     [Binding]
     [Scope(Feature = "UserFields")]
@@ -14,7 +14,7 @@ namespace TMX.Automation.FeatureSteps.Users
         public UserFieldsSteps(ScenarioContext scenarioContext) : base(scenarioContext)
         {
             userFieldsPage = new UserFieldsPage(driver);
-        }        
+        }
 
         [Given(@"I Click AddField")]
         public void GivenIClickAddField()
@@ -32,30 +32,30 @@ namespace TMX.Automation.FeatureSteps.Users
         [Then(@"Field Should Be Created")]
         public void ThenFieldShouldBeCreated()
         {
-            
+
         }
 
         [When(@"I Click Edit Icon Beside Field")]
         public void WhenIClickEditIconBesideField()
         {
-                    }
+        }
 
         [Then(@"str Should Be Displayed")]
         public void ThenStrShouldBeDisplayed()
         {
-           
+
         }
 
         [When(@"I Click Delete Button")]
         public void WhenIClickDeleteButton()
         {
-            
+
         }
 
         [Then(@"(.*) Field Should Be Deleted")]
         public void ThenStrFieldShouldBeDeleted(string fieldName)
         {
-            
+
         }
 
     }
