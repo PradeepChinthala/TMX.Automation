@@ -6,6 +6,8 @@ using TMX.Selenium.PageObjects.Originals;
 using TMX.Selenium.PageObjects.Bundles;
 using System.Linq;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
+using Configurations;
 
 namespace TMX.Selenium.PageObjects.Home
 {
@@ -20,9 +22,9 @@ namespace TMX.Selenium.PageObjects.Home
         #region Page Objects
 
         [FindsBy(How = How.CssSelector, Using = "span.icon-profile")]
-        private IWebElement userSetting = null;
+        private IWebElement userSetting = null;       
 
-        [FindsBy(How = How.CssSelector, Using = ".mat-menu-content button:nth-child(2)")]
+        [FindsBy(How = How.CssSelector, Using = "span.icon-out")]
         private IWebElement logOutButton = null;
 
         [FindsBy(How = How.XPath, Using = "//span[span[text()='Dashboard']]/md-icon")]
@@ -35,7 +37,7 @@ namespace TMX.Selenium.PageObjects.Home
         private IWebElement bundles = null;
 
         [FindsBy(How = How.CssSelector, Using = "span.icon-cog")]
-        private IWebElement caseSettings = null;
+        private IWebElement matterSetting = null;
 
         [FindsBy(How = How.CssSelector, Using = "span.search-bar-settings")]
         private IWebElement searchFilter = null;
@@ -46,10 +48,13 @@ namespace TMX.Selenium.PageObjects.Home
         [FindsBy(How = How.Id, Using = "md-tab-label-0-1")]
         private IWebElement textFilterTab = null;
 
-        //[FindsBy(How = How.XPath, Using = "//app-root[contains(text(),'Loading')]")]
-        //private IWebElement loading = null;
+        [FindsBy(How = How.CssSelector, Using = "div.mat-select-trigger")]
+        private IWebElement matterDropDown = null;
 
+        [FindsBy(How = How.CssSelector, Using = "div.mat-select-content md-option")]
+        private IList<IWebElement> matterSelection = null;
 
+        private string tabName = "//div[@class='side-nav-container']/a[span[contains(text(),'{0}')]]";
         #endregion
 
 
@@ -57,10 +62,14 @@ namespace TMX.Selenium.PageObjects.Home
 
         public void LogOut()
         {
-            userSetting.ClickWrapper();
             logOutButton.ClickWrapper();
         }
-
+        public void SelectMatter(string matterName)
+        {
+            matterDropDown.ClickWrapper();
+            wait.Until(d => matterSelection.Count > 1);
+            matterSelection.SelectCustomOption(matterName);
+        }
         public void SelecteFilter(string filterSelection)
         {
             var baseFilter = filterSelection.Split('@');
@@ -95,19 +104,42 @@ namespace TMX.Selenium.PageObjects.Home
             return new BundlePage(driver);
         }
 
-        public void ClickCaseSettings()
+        public void ClickMatterSetting()
         {
-            caseSettings.ClickWrapper();
+            Wait(ExpectedConditions.ElementToBeClickable(matterSetting.GetLocator()));
+            matterSetting.ClickWrapper();
+        }
+        
+        public void ClickOnTab(string tabName)
+        {
+            var tabElement = driver.FindElement(By.XPath(string.Format(this.tabName,tabName)));
+            tabElement.ClickWrapper();
+        }
+        public void ClickUserSetting()
+        {
+            userSetting.Click();
         }
 
         protected override void ExecuteLoad()
-        {
-            driver.Navigate().Refresh();
+        {           
+            if(!driver.Url.Contains("/dashboard"))
+            {
+                int i = 0;
+                while(i < Config.Retries)
+                {
+                    driver.RefreshPage();
+                    var result = WaitAndGetResult(ExpectedConditions.UrlContains("/dashboard"), waitMin);
+                    if (result)
+                        break;
+                    i++;
+                }                
+            }          
+
         }
 
         protected override bool EvaluateLoadedStatus()
         {
-            return WaitAndGetResult(ExpectedConditions.UrlContains("/dashboard"), waitLong);
+            return WaitAndGetResult(ExpectedConditions.UrlContains("/dashboard"), 2);
         }
         #endregion
     }

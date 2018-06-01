@@ -13,18 +13,36 @@ namespace TMX.TestAutomation.FeatureSteps.Login
 
         HomePage homePage;
 
-        [Given(@"I go to dashboard")]
+        [Given(@"I Go to dashboard")]
         public void GivenIGoToDashboard()
         {
             homePage = loginPage.Login();
+        }
+
+        [Given(@"I Select Matter (.*)")]
+        public void GivenISelectMatter(string matterName)
+        {
+            homePage.SelectMatter(matterName);
+        }
+
+        [Given(@"I Goto Matter Setting")]
+        [When(@"I Goto Matter Setting")]
+        public void GivenIGotoMatterSetting()
+        {
+            homePage.ClickMatterSetting();
+        }
+
+        [When(@"I Click (.*)")]
+        public void WhenIClick(string tabName)
+        {
+            homePage.ClickOnTab(tabName);
         }
 
         [When(@"I click on Bundles")]
         public void WhenIClickOnBundles()
         {
             homePage.GotoBundles();
-        }
-
+        }        
 
         [When(@"I click on logout")]
         public void WhenIClickOnLogout()

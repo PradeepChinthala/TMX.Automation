@@ -21,7 +21,7 @@ try
 	$DateTime = get-date -format ddd_ddMMyyyy_HHmmss
 	$DATEYYYYMMDD=(Get-Date).ToString('yyyyMMddHHmmss')
 
-	Start-Transcript -path "C:\evidence\logs\ReportExecution$DATEYYYYMMDD.log"
+	
 
 	# PRECONDITIONS
 	# *************
@@ -30,11 +30,19 @@ try
 	# Change to the Project directory
     Set-Location $PSScriptRoot
 
-	# Automation Directory
+	# Creating Automation Out Directory
 	$resultDir="C:\Automation.TMX\$DateTime"
+	$logDir = "$resultDir\Log"
 	if (!(Test-Path $resultDir)){
 		New-Item -ItemType directory -Path $resultDir
 	}
+
+	# Creating Log Directory
+	if(!(Test-Path $resultDir)){
+		New-Item -ItemType directory -Path $logDir
+	}
+
+	Start-Transcript -path "$logDir\TestReport_$DATEYYYYMMDD.log"
 
 	#Update Path
 	$listDirectories = Get-ChildItem -Path .\packages -Include tools* -Recurse -Directory | Select-Object FullName

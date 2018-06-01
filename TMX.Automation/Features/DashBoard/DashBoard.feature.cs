@@ -18,9 +18,9 @@ namespace TMX.Automation.Features.DashBoard
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Login")]
+    [NUnit.Framework.DescriptionAttribute("Dashboard")]
     [NUnit.Framework.CategoryAttribute("Regression")]
-    public partial class LoginFeature
+    public partial class DashboardFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -32,7 +32,7 @@ namespace TMX.Automation.Features.DashBoard
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Login", "\tIn order to verify control access to the Matter\r\n\tAs a user or authenticated", ProgrammingLanguage.CSharp, new string[] {
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Dashboard", "\tIn order to verify control access to the Matter\r\n\tAs a user or authenticated", ProgrammingLanguage.CSharp, new string[] {
                         "Regression"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -69,22 +69,22 @@ namespace TMX.Automation.Features.DashBoard
         {
 #line 6
 #line 7
- testRunner.Given("I go to dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I Go to dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Successful sign in and display dashboard [TC-1234]")]
-        public virtual void SuccessfulSignInAndDisplayDashboardTC_1234()
+        [NUnit.Framework.DescriptionAttribute("[TC-1234]")]
+        public virtual void TC_1234()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful sign in and display dashboard [TC-1234]", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[TC-1234]", ((string[])(null)));
 #line 10
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
-#line 11
- testRunner.When("I click on logout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 12
+ testRunner.When("I click on logout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 13
   testRunner.Then("login page should display", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

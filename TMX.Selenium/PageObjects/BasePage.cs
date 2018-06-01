@@ -9,11 +9,12 @@ namespace TMX.Selenium.PageObjects
 {
     public abstract class BasePage
     {
-        protected int wait = 30;
-        protected int waitLong = 60;
-        protected int waitSuper = 120;
+        protected uint waitMin = 30;
+        protected uint waitMax = 60;
+        protected uint waitSuper = 120;
         protected Actions actions;
         protected IWebDriver driver;
+        protected WebDriverWait wait;
 
         public BasePage(IWebDriver driver,int pageLodTimeOut = 60, int elemtTimeOut = 30)
         {
@@ -22,6 +23,9 @@ namespace TMX.Selenium.PageObjects
             PageFactory.InitElements(this.driver, this);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(elemtTimeOut);
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(pageLodTimeOut);
+
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(elemtTimeOut));
+            wait.IgnoreExceptionTypes(typeof(Exception));
         }
         public void Wait<TResult>(Func<IWebDriver, TResult> condition, int timeout = 5)
         {  

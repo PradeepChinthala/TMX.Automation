@@ -15,8 +15,10 @@ namespace TMX.Selenium.WebDriverHelpers
         {
             IWebDriver driver;
             Url = Config.SiteUrl;
-            if (!Url.Contains("https://tmx"))
-                 Url = $@"https://{Config.AuthenticateUserName}:{Config.AuthenticatePassword}@{Config.SiteUrl}/site";
+
+            //if (!Url.Contains("https://tmx"))
+            //     Url = $@"https://{Config.AuthenticateUserName}:{Config.AuthenticatePassword}@{Config.SiteUrl}/site";
+
 
             switch (browser.ToLower())
             {
@@ -24,8 +26,11 @@ namespace TMX.Selenium.WebDriverHelpers
                     {
                         ChromeDriverService service = ChromeDriverService.CreateDefaultService();
                         ChromeOptions options = new ChromeOptions();
+                        options.AddUserProfilePreference("download.prompt_for_download", true);
                         options.AddArgument("--disable-infobars");
                         options.AddArguments("--disable-extensions");
+                        options.AddArguments("--disable-popup-blocking");
+                        options.AddArguments("--disable-print-preview");
                         driver = new ChromeDriver(service, options, TimeSpan.FromSeconds(120));
                         driver.Manage().Window.Maximize();
                         driver.Navigate().GoToUrl(Url);

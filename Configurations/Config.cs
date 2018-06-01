@@ -12,6 +12,7 @@ namespace Configurations
         public static string Password => ConfigurationManager.AppSettings["Password"];
         public static string AuthenticateUserName => ConfigurationManager.AppSettings["AuthenticateUserName"];
         public static string AuthenticatePassword => ConfigurationManager.AppSettings["AuthenticatePassword"];
+        public static int Retries => Convert.ToInt32(ConfigurationManager.AppSettings["RefreshReties"]);
 
     }
 }

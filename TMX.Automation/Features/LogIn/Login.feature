@@ -4,9 +4,10 @@ Feature: Login
 	As a user or authenticated
 
 Background: 
-	Given I go to dashboard
+	Given I Go to dashboard
 
 
-Scenario:Successful sign in and display dashboard [TC-1234]
+Scenario:[TC-1234]
+Successful sign in and display dashboard 
 	When I click on logout
 		Then login page should display

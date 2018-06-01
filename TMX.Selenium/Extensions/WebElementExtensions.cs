@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -34,6 +35,12 @@ namespace TMX.Selenium
             }
         }
 
+        public static void MoveAndClick(this IWebElement element)
+        {            
+            Actions actions = new Actions(element.WrapsDriver());
+            actions.MoveToElement(element).Click().Build().Perform();
+        }
+
         public static void SendKeysWrapper(this IWebElement element, string value, bool js = false)
         {
             int retryCount = 2;
@@ -46,12 +53,14 @@ namespace TMX.Selenium
                         js = element.Displayed == false ? true : false;
 
                     if (js)
-                    {                        
+                    {
+                        element.ClearWrapper(js);
                         JavaScriptExecutor(string.Format(JSOperator.SetValue, value), element);
                         break;
                     }
                     else
                     {
+                        element.ClearWrapper();
                         element.SendKeys(value); break;
                     }
                 }
@@ -87,16 +96,47 @@ namespace TMX.Selenium
 
         public static void SelectCustomOption(this IList<IWebElement> elements, string value)
         {
+            Thread.Sleep(100);
             if (elements.FirstOrDefault().ControlEnabled())
             {
                 IWebElement returnObject = elements.Where(e => e.Text.ToLower().Contains(value.ToLower())).FirstOrDefault();
+                returnObject.ControlExist();
                 returnObject.ClickWrapper();
             }
             else
             {
                 throw new Exception(String.Format("Element {0} is not displayed", elements));
             }
-        }                
+        }
+
+        public static void SelectComboboxValue(this IWebElement element, string value, bool js = false)
+        {
+            Thread.Sleep(200);
+            int retryCount = 3;
+
+            while (retryCount > 0)
+            {
+                if (element.ControlEnabled())
+                {
+                    if (!js)
+                        js = element.Displayed == false ? true : false;
+
+                    if (js)
+                    {
+                        JavaScriptExecutor(string.Format(JSOperator.SelectComboBox, value), element);
+                        break;                        
+                    }
+                    else
+                    {
+                        SelectElement dropdown = new SelectElement(element);
+                        dropdown.SelectByText(value);
+                        if (element.GetText().Contains(value))
+                            break;
+                    }                    
+                }                               
+                retryCount--;
+            }
+        }
 
         public static bool ControlEnabled(this IWebElement element, bool enabled = true, uint timeoutInSeconds = 30)
         {            
@@ -172,10 +212,16 @@ namespace TMX.Selenium
         {
             try
             {
+                Thread.Sleep(200);
                 IWebDriver driver = (element as IWrapsDriver ?? (IWrapsDriver)((IWrapsElement)element).WrappedElement).WrappedDriver;
                 return driver;
             }
             catch { throw; }            
+        }
+
+        public static void RefreshPage(this IWebDriver driver)
+        {
+            (driver as IJavaScriptExecutor).ExecuteScript("location.reload();");
         }
 
         #region Java Executor
@@ -194,7 +240,17 @@ namespace TMX.Selenium
             public static string IsDisplayed { get { return "if(parseInt(arguments[0].offsetHeight) > 0 && parseInt(arguments[0].offsetWidth) > 0) return true; return false;"; } }
             public static string ValidateAttribute { get { return "return arguments[0].getAttribute('{0}');"; } }
             public static string ScrollToElement { get { return "arguments[0].scrollIntoView(true);"; } }
-
+            public static string SelectComboBox
+            {
+                get
+                {
+                    return String.Format("var length = arguments[0].options.length;  for (var i=0; i<length; i++){{  if (arguments[0].options[i].text == '{0}'){{ arguments[0].selectedIndex = i; break; }} }}");
+                }
+            }
+            public static string GetSelectedComboboxValue
+            {
+               get { return "return arguments[0].options[arguments[0].selectedIndex].text"; }
+            }
         }
 
         #endregion
