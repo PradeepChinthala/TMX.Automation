@@ -32,7 +32,7 @@ namespace TMX.TestAutomation.FeatureSteps.Login
             homePage.ClickMatterSetting();
         }
 
-        [When(@"I Click (.*)")]
+        [When(@"I Click (.*) Tab")]
         public void WhenIClick(string tabName)
         {
             homePage.ClickOnTab(tabName);
@@ -44,8 +44,9 @@ namespace TMX.TestAutomation.FeatureSteps.Login
             homePage.GotoBundles();
         }        
 
-        [When(@"I click on logout")]
-        public void WhenIClickOnLogout()
+        [When(@"I Logout From TMX")]
+        [Then(@"I Logout From TMX")]
+        public void WhenILogoutTMX()
         {
             homePage.LogOut();
         }

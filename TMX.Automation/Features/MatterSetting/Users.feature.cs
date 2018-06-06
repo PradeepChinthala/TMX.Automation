@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace TMX.Automation.Features.DashBoard
+namespace TMX.Automation.Features.MatterSetting
 {
     using TechTalk.SpecFlow;
     
@@ -18,22 +18,20 @@ namespace TMX.Automation.Features.DashBoard
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Dashboard")]
-    [NUnit.Framework.CategoryAttribute("Regression")]
-    public partial class DashboardFeature
+    [NUnit.Framework.DescriptionAttribute("Users")]
+    public partial class UsersFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "DashBoard.feature"
+#line 1 "Users.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Dashboard", "\tIn order to verify control access to the Matter\r\n\tAs a user or authenticated", ProgrammingLanguage.CSharp, new string[] {
-                        "Regression"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Users", "In order to Add,Edit,Delete Users", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -65,29 +63,23 @@ namespace TMX.Automation.Features.DashBoard
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
-        {
-#line 6
-#line 7
- testRunner.Given("I Go to dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-        }
-        
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("TC-1234_SuccessfulSigninAndDisplayDashboard")]
-        public virtual void TC_1234_SuccessfulSigninAndDisplayDashboard()
+        [NUnit.Framework.DescriptionAttribute("TC_264037_VerifyPemissionsForGuestUser")]
+        public virtual void TC_264037_VerifyPemissionsForGuestUser()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TC-1234_SuccessfulSigninAndDisplayDashboard", ((string[])(null)));
-#line 10
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TC_264037_VerifyPemissionsForGuestUser", ((string[])(null)));
+#line 5
 this.ScenarioSetup(scenarioInfo);
 #line 6
-this.FeatureBackground();
-#line 11
- testRunner.Given("I Select Matter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 12
- testRunner.When("I Logout From TMX", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 13
-  testRunner.Then("login page should display", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("I Go to dashboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+ testRunner.And("I Select Matter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 8
+ testRunner.When("I Goto Matter Setting", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 9
+ testRunner.And("I Click Users Tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 10
+  testRunner.Then("I Logout From TMX", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

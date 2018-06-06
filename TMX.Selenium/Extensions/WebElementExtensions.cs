@@ -35,10 +35,10 @@ namespace TMX.Selenium
             }
         }
 
-        public static void MoveAndClick(this IWebElement element)
+        public static void MoveByOffSetClick(this IWebElement element,int x,int y, MoveToElementOffsetOrigin org)
         {            
             Actions actions = new Actions(element.WrapsDriver());
-            actions.MoveToElement(element).Click().Build().Perform();
+            actions.MoveToElement(element,x,y, org).Click().Build().Perform();
         }
 
         public static void SendKeysWrapper(this IWebElement element, string value, bool js = false)
@@ -96,7 +96,6 @@ namespace TMX.Selenium
 
         public static void SelectCustomOption(this IList<IWebElement> elements, string value)
         {
-            Thread.Sleep(100);
             if (elements.FirstOrDefault().ControlEnabled())
             {
                 IWebElement returnObject = elements.Where(e => e.Text.ToLower().Contains(value.ToLower())).FirstOrDefault();

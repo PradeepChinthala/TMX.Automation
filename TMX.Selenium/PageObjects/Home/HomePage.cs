@@ -8,6 +8,7 @@ using System.Linq;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
 using Configurations;
+using OpenQA.Selenium.Interactions;
 
 namespace TMX.Selenium.PageObjects.Home
 {
@@ -26,6 +27,9 @@ namespace TMX.Selenium.PageObjects.Home
 
         [FindsBy(How = How.CssSelector, Using = "span.icon-out")]
         private IWebElement logOutButton = null;
+
+        [FindsBy(How = How.CssSelector, Using = "md-dialog-container button[name='copy']")]
+        private IWebElement logOutConfirm = null;
 
         [FindsBy(How = How.XPath, Using = "//span[span[text()='Dashboard']]/md-icon")]
         private IWebElement dashboard = null;
@@ -62,7 +66,12 @@ namespace TMX.Selenium.PageObjects.Home
 
         public void LogOut()
         {
-            logOutButton.ClickWrapper();
+            Wait(ExpectedConditions.VisibilityOfAllElementsLocatedBy(logOutButton.GetLocator()),10);
+            //logOutButton.MoveByOffSetClick(1336, 25, MoveToElementOffsetOrigin.TopLeft);
+            actions.MoveToElement(logOutButton).Build().Perform();
+            logOutButton.ClickWrapper(true);
+            Wait(ExpectedConditions.ElementToBeClickable(logOutConfirm.GetLocator()),10);
+            logOutConfirm.ClickWrapper(true);
         }
         public void SelectMatter()
         {
@@ -139,7 +148,7 @@ namespace TMX.Selenium.PageObjects.Home
 
         protected override bool EvaluateLoadedStatus()
         {
-            return WaitAndGetResult(ExpectedConditions.UrlContains("/dashboard"), 2);
+            return WaitAndGetResult(ExpectedConditions.UrlContains("/dashboard"),3);
         }
         #endregion
     }

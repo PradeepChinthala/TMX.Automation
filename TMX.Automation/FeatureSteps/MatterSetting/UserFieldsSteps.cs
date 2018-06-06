@@ -16,13 +16,13 @@ namespace TMX.Automation.FeatureSteps.MatterSetting
             userFieldsPage = new UserFieldsPage(driver);
         }
 
-        [Given(@"I Click AddField")]
+        [When(@"I Click AddField")]
         public void GivenIClickAddField()
         {
             userFieldsPage.ClickAddField();
         }
 
-        [Given(@"I Enter Fields")]
+        [When(@"I Enter Fields")]
         public void GivenIEnterFields(Table table)
         {
             userFieldsPage.InsertTextValues(table);
@@ -32,7 +32,7 @@ namespace TMX.Automation.FeatureSteps.MatterSetting
         [Then(@"Field Should Be Created")]
         public void ThenFieldShouldBeCreated()
         {
-
+            userFieldsPage.GetNewlyCreatedField();
         }
 
         [When(@"I Click Edit Icon Beside Field")]

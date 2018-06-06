@@ -56,10 +56,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bogus, Version=22.0.2.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bogus.22.0.2\lib\net40\Bogus.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="FluentAssertions, Version=5.1.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.5.1.2\lib\net45\FluentAssertions.dll</HintPath>
       <Private>True</Private>
@@ -80,6 +76,7 @@
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -129,6 +126,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserFields.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\MatterSetting\Users.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +173,10 @@
     <None Include="Features\MatterSetting\UserFields.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UserFields.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\MatterSetting\Users.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Users.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

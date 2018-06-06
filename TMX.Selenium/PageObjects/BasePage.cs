@@ -14,10 +14,12 @@ namespace TMX.Selenium.PageObjects
         protected uint waitSuper = 120;
         protected IWebDriver driver;
         protected WebDriverWait wait;
+        protected Actions actions;
 
         public BasePage(IWebDriver driver,int pageLodTimeOut = 50, int elemtTimeOut = 20)
         {
             this.driver = driver;
+            this.actions = new Actions(driver);
             PageFactory.InitElements(this.driver, this);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(elemtTimeOut);
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(pageLodTimeOut);

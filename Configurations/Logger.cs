@@ -8,7 +8,7 @@ namespace Configurations
 {
     public static class Logger
     {
-        public static void Informat(string message)
+        public static void InfoFormat(string message)
         {
             Console.WriteLine("<<<<<<  "+message+"  >>>>>>>>");
         }

@@ -64,11 +64,14 @@
     <Compile Include="Config.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Parameter.cs" />
+    <Compile Include="Parameters\ParameterCollector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Parameters\Parameter_Shared.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SpecFlow.2.3.0\build\SpecFlow.targets" Condition="Exists('..\packages\SpecFlow.2.3.0\build\SpecFlow.targets')" />

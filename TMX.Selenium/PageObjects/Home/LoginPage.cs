@@ -27,12 +27,13 @@ namespace TMX.Selenium.PageObjects.Home
 
         public HomePage Login(string email = null, string password = null)
         {
+            HomePage home;
             if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
             {
                 email = Config.Email;
                 password = Config.Password;
             }
-
+            
             Wait(ExpectedConditions.ElementToBeClickable(this.email.GetLocator()), 10);
 
             this.email.SendKeysWrapper(email);
@@ -40,13 +41,16 @@ namespace TMX.Selenium.PageObjects.Home
             logInButton.Submit();
             try
             {
-                logInButton.ControlEnabled(true,10);
-                if (!string.IsNullOrEmpty(this.email.Text))
+                Wait(ExpectedConditions.ElementToBeClickable(logInButton.GetLocator()),10);
+                if (string.IsNullOrEmpty(this.email.Text))
+                {
                     Login();
+                    home = new HomePage(driver);
+                    return home.Load();
+                }                    
             }
             catch {}
-
-            var home = new HomePage(driver);
+            home = new HomePage(driver);
             return home.Load();
         }
         #endregion

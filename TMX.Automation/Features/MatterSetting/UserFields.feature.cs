@@ -19,7 +19,7 @@ namespace TMX.Automation.Features.MatterSetting
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("UserFields")]
-    [NUnit.Framework.CategoryAttribute("Regression")]
+    [NUnit.Framework.CategoryAttribute("Regressions")]
     public partial class UserFieldsFeature
     {
         
@@ -33,7 +33,7 @@ namespace TMX.Automation.Features.MatterSetting
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "UserFields", "\tIn order to Add,Edit,Delete and permissions for user fileds", ProgrammingLanguage.CSharp, new string[] {
-                        "Regression"});
+                        "Regressions"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,22 +74,22 @@ namespace TMX.Automation.Features.MatterSetting
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[TC-264027]")]
-        public virtual void TC_264027()
+        [NUnit.Framework.DescriptionAttribute("TC_264027_DeleteUserFields")]
+        public virtual void TC_264027_DeleteUserFields()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[TC-264027]", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TC_264027_DeleteUserFields", ((string[])(null)));
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 5
 this.FeatureBackground();
-#line 10
+#line 9
  testRunner.Given("I Select Matter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 11
+#line 10
  testRunner.When("I Goto Matter Setting", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 11
+ testRunner.And("I Click Fields Tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
- testRunner.And("I Click Fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
- testRunner.Given("I Click AddField", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.And("I Click AddField", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "nameField",
@@ -106,61 +106,42 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "ContentType",
                         "null"});
-#line 14
+#line 13
  testRunner.And("I Enter Fields", ((string)(null)), table1, "And ");
-#line 20
+#line 19
   testRunner.Then("Field Should Be Created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 21
+#line 20
  testRunner.When("I Click Edit Icon Beside Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 22
+#line 21
   testRunner.Then("str Should Be Displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 23
+#line 22
  testRunner.When("I Click Delete Button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 24
+#line 23
   testRunner.Then("Str Field Should Be Deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 24
+  testRunner.And("I Logout From TMX", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[TC-264028]")]
+        [NUnit.Framework.DescriptionAttribute("TC-264028_DeleteUserFields")]
         [NUnit.Framework.TestCaseAttribute("1234", null)]
-        [NUnit.Framework.TestCaseAttribute("3456", null)]
-        public virtual void TC_264028(string testCase, string[] exampleTags)
+        public virtual void TC_264028_DeleteUserFields(string testCase, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[TC-264028]", exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TC-264028_DeleteUserFields", exampleTags);
 #line 27
 this.ScenarioSetup(scenarioInfo);
 #line 5
 this.FeatureBackground();
-#line 29
+#line 28
  testRunner.Given("I Select Matter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 30
+#line 29
  testRunner.When("I Goto Matter Setting", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 30
+ testRunner.And("I Click Fields Tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 31
- testRunner.And("I Click Fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 32
- testRunner.Given("I Click AddField", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "nameField",
-                        "values"});
-            table2.AddRow(new string[] {
-                        "ShortName",
-                        "AA"});
-            table2.AddRow(new string[] {
-                        "FullName",
-                        "AA"});
-            table2.AddRow(new string[] {
-                        "DataType",
-                        "null"});
-            table2.AddRow(new string[] {
-                        "ContentType",
-                        "null"});
-#line 33
- testRunner.And("I Enter Fields", ((string)(null)), table2, "And ");
-#line 39
-  testRunner.Then("Field Should Be Created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I Logout From TMX", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

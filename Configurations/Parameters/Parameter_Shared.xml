@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PARAMETER>
+  <SHARED>
+    <Email>pradeep.chinthala@aeriestechnology.com</Email>
+    <Password>Pradeep@123</Password>
+  </SHARED>
+  <FEATURE_PECIFIC>
+    <UserFields>
+      
+    </UserFields>
+  </FEATURE_PECIFIC>
+  
+  <SCENARIO_SPECIFIC>
+    <TC_264027_DeleteUserFields>
+      <ShortName></ShortName>
+      <LongName></LongName>
+      <DataType></DataType>
+      <ContentType></ContentType>
+    </TC_264027_DeleteUserFields>
+  </SCENARIO_SPECIFIC>
+</PARAMETER>

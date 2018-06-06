@@ -22,6 +22,7 @@ namespace TMX.TestAutomation.FeatureSteps
         public Hooks(ScenarioContext scenarioContext)
         {          
             this.scenarioContext = scenarioContext;
+            Parameter.Add("ScenarioName", scenarioContext.ScenarioInfo.Title,true);
         }
 
         [BeforeScenario]
@@ -34,6 +35,7 @@ namespace TMX.TestAutomation.FeatureSteps
             }
             else
             {
+                Parameter.Add("FeatureName", featureContext.FeatureInfo.Title,true);
                 driver = new WebDriverFactory().GetWebDriver(browser);
             }
             scenarioContext.Set<IWebDriver>(driver);

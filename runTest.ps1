@@ -3,7 +3,7 @@ Param(
 	#[ValidateSet("QA", "STAGE")]
 	[string]$CONFIGURATION="QA",
 	[string]$PROJECTNAME = 'TMX.Automation',
-	[string]$SELECTTEST = 'cat == Regression',
+	[string]$SELECTTEST = 'cat == Regressions',
 	[boolean]$UPDATEBUILD = $false
 )
 Function ResizePSWindow

@@ -74,25 +74,25 @@ namespace TMX.Automation.Features.Bundles
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("[TC-123]")]
-        public virtual void TC_123()
+        [NUnit.Framework.DescriptionAttribute("TC_23_SelectBundleVerifyIndexAndMyView")]
+        public virtual void TC_23_SelectBundleVerifyIndexAndMyView()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[TC-123]", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TC_23_SelectBundleVerifyIndexAndMyView", ((string[])(null)));
 #line 8
 this.ScenarioSetup(scenarioInfo);
 #line 5
 this.FeatureBackground();
+#line 9
+ testRunner.Given("I Select Matter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
- testRunner.When("I Select Matter for US#246152-5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
  testRunner.When("I click on Bundles", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 12
+#line 11
  testRunner.And("I click on index view", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 13
+#line 12
  testRunner.And("I click on my view", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 13
+ testRunner.And("I Logout From TMX", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
- testRunner.And("I click on logout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 15
   testRunner.Then("login page should display", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

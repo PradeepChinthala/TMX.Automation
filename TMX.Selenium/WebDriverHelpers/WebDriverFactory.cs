@@ -31,6 +31,7 @@ namespace TMX.Selenium.WebDriverHelpers
                         options.AddArguments("--disable-extensions");
                         options.AddArguments("--disable-popup-blocking");
                         options.AddArguments("--disable-print-preview");
+                        options.AddArguments("--window-size=1600x900");
                         driver = new ChromeDriver(service, options, TimeSpan.FromSeconds(120));
                         driver.Manage().Window.Maximize();
                         driver.Navigate().GoToUrl(Url);

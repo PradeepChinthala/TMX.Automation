@@ -7,7 +7,7 @@ Background:
 	Given I Go to dashboard
 
 
-Scenario:[TC-1234]
-Successful sign in and display dashboard 
-	When I click on logout
+Scenario:TC-1234_SuccessfulSigninAndDisplayDashboard 
+	Given I Select Matter
+	When I Logout From TMX
 		Then login page should display

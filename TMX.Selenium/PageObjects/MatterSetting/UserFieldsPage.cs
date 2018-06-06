@@ -8,20 +8,20 @@ using OpenQA.Selenium.Support.PageObjects;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Support.UI;
 using Configurations;
+using System.Data;
 
 namespace TMX.Selenium.PageObjects.MatterSetting
 {
     public class UserFieldsPage : BasePage
     {
-        Dictionary<string, IWebElement> dict;
         #region Constructor
         public UserFieldsPage(IWebDriver driver) : base(driver){}
         #endregion
 
         #region Page Objects
 
-        [FindsBy(How = How.CssSelector, Using = ".side-nav-container a:nth-child(6) span")]
-        private IWebElement userFieldTab = null;
+        [FindsBy(How = How.CssSelector, Using = "#fields md-card[class='mat-card'] div[class='field-row table-header'] div h4")]
+        private IList<IWebElement> userFieldsHeaderNames = null;
 
         [FindsBy(How = How.CssSelector, Using = "app-fields md-card button")]
         private IWebElement addField = null;
@@ -67,23 +67,44 @@ namespace TMX.Selenium.PageObjects.MatterSetting
                 else if (nameField.Trim().Equals("FullName") && !textValue.Contains("null"))
                 {
                     fullName.SendKeysWrapper(textValue);
-                    Logger.Informat($"name of the field : {textValue}");
+                    Parameter.Add("NewField", textValue);
+                    Logger.InfoFormat($"{textValue} : field Created ");
                 }                    
 
                 else if (nameField.Trim().Equals("DataType") && !textValue.Contains("null"))
                     dataType.SelectComboboxValue(textValue);
                 
             }
+            Wait(ExpectedConditions.ElementToBeClickable(save.GetLocator()));
             save.ClickWrapper();
-        }
-        
-        public void SelectDataType(string DataType)
+        }        
+       
+        public bool GetNewlyCreatedField()
         {
-           // dataType.S();
+            return true;
         }
         public void ClickSave()
         {
             save.ClickWrapper();
+        }
+
+        public DataTable GetFieldRecords()
+        {
+            DataTable htmlTable = new DataTable();
+            IList<IWebElement> rows = null;
+            var columnNames = userFieldsHeaderNames.Select(e => e.Text.Trim()).ToList();
+
+            for(int i = 0; i <= columnNames.Count; i++)
+            {
+                htmlTable.Columns.Add(columnNames[i]);
+                for(int j = 0; j <= columnNames.Count; j++)
+                {
+
+                }
+            }
+
+
+            return htmlTable;
         }
         #endregion
     }
